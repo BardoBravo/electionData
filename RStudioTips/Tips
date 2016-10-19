@@ -1,0 +1,47 @@
+http://www.computerworld.com/article/3038270/data-analytics/create-maps-in-r-in-10-fairly-easy-steps.html?nsdr=true
+
+Using %>% in Windows (?)
+
+NA regions in SL [301-305]; those entries were changed to Arroio da Manteiga
+
+Final command
+> leaflet(slmap) %>%
++     addProviderTiles("CartoDB.Positron") %>%
++     addPolygons(stroke=TRUE,
++                 weight=1,
++                 smoothFactor = 0.2, 
++                 fillOpacity = .75,
++                 popup=slpopup,
++                 color=~vanazziPalette(slmap@data$vanazziPct),
++                 group="vanazzi"
++                 ) %>%
++     addLegend(position="bottomleft", colors=c("#984ea3", "#e41a1c"), labels=c("Ary Vanazzi","Moacir")) %>%
++     addPolygons(stroke=TRUE,
++                 weight=1,
++                 smoothFactor = 0.2, 
++                 fillOpacity = .75,
++                 popup=slpopup,
++                 color=~moacirPalette(slmap@data$moacirPct),
++                 group="moacir"
++     ) %>%
++     addPolygons(stroke=TRUE,
++                 weight=1,
++                 smoothFactor = 0.2, 
++                 fillOpacity = .75,
++                 popup=slpopup,
++                 color=~azaraoPalette(slmap@data$azaraoPct),
++                 group="azarao"
++     ) %>%
++     addLayersControl(
++         baseGroups = c("vanazzi", "moacir", "azarao"),
++         position= "bottomleft",
++         options = layersControlOptions(collapsed=FALSE)
++     )
+
+Format Paste0 (HTML for the win)
+slpopup <- paste0("<html><strong>Bairro: ", slmap@data$NM_BAIRRO, "</strong><br>",
+                  "Ary Vanazzi: ", percent(slmap$vanazziPct),"<br>",
+                  "Moacir: ", percent(slmap$moacirPct),"<br>",
+                  "Azarão: ", percent(slmap$azaraoPct), "</html>"
+                  )
+
