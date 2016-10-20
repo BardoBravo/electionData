@@ -1,0 +1,17 @@
+Source: TRE
+Votes: [SL] http://www.tre-rs.jus.br/eleicoes/2016/1turno/88773/secoes.html
+Candidates: http://divulgacandcontas.tse.jus.br/divulga/#/municipios/2016/2/88773/candidatos
+
+Using Google Sheets is the best option, since we can use function ImportHtml() to directly import HTML data from source URL. In this case,
+are interested in tables, numbers 0 (veradores) and 2 (Prefeito);
+Link: https://eagereyes.org/data/scrape-tables-using-google-docs
+
+Data from Sheets: Using REGEXEXTRACT, I get the Sheet name (Sheet1, i.e.), and only take the number, which I use to define the URL
+address of the election section data:
+http://www.tre-rs.jus.br/eleicoes/2016/1turno/votacao/bu_88773_51_5.html
+
+Sheet internal fuctions:
+sheetName() - get active sheet name
+cloneGoogleSheet() - duplicate the content of template sheet (Sheet1, for instance). However, in this case I want to determine the sequential
+number of the sheet, since it defines the section number.
+
