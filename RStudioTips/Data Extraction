@@ -15,3 +15,9 @@ sheetName() - get active sheet name
 cloneGoogleSheet() - duplicate the content of template sheet (Sheet1, for instance). However, in this case I want to determine the sequential
 number of the sheet, since it defines the section number.
 
+Extract Election Section address
+http://www.tre-rs.jus.br/apps/locais/index.php?acao=zona&zona=73
+
+
+
+
